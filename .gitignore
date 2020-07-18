@@ -1,4 +1,6 @@
 # Editors
 .idea/
+__pycache__/
+
 ToDo.txt
 temporary_test.py
