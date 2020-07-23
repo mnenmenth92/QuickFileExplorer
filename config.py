@@ -1,5 +1,6 @@
 # default values
 default_path = 'C:\\TestFolder'
+window_name = 'Quick File Explorer'
 
 # displayed colors
 # colorama: https://pypi.org/project/colorama/
