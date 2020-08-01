@@ -9,7 +9,7 @@ curses: https://docs.python.org/2/library/curses.html
 '''
 
 
-class UserHandler():
+class UserHandler:
 
     def __init__(self, window):
         self.key = curses.KEY_UP  # variable init
@@ -44,9 +44,3 @@ class UserHandler():
     # reset whole interface
     def reset_terminal(self):
         pass
-
-    def curses_main_loop(self):
-        while self.continue_loop:
-            self.select_action()
-            self.window.refresh()
-
