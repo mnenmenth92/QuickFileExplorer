@@ -20,4 +20,6 @@ colors = {
 
 selected_background = curses.COLOR_BLUE
 default_background = curses.COLOR_BLACK
+path_color = curses.COLOR_WHITE
+type_line_color = curses.COLOR_WHITE
 

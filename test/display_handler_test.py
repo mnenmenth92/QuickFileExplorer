@@ -29,7 +29,7 @@ class DisplayHandlerTest(unittest.TestCase):
 
     # test interface generation on example folder
     def test_interface_string(self):
-        interface_strings = self.display.interface_strings('', 1)
+        interface_strings = self.display.folders_elements_format(1)
         correct_list = [
             ('file1.txt', curses.COLOR_YELLOW, curses.COLOR_BLACK),
             ('file2.txt', curses.COLOR_YELLOW, curses.COLOR_BLUE),
@@ -40,7 +40,7 @@ class DisplayHandlerTest(unittest.TestCase):
 
     # test interface generation on example folder txt files only
     def test_interface_filtered_string(self):
-        interface_strings = self.display.interface_strings('', 1, 'txt')
+        interface_strings = self.display.folders_elements_format(1, 'txt')
         correct_list = [
             ('file1.txt', curses.COLOR_YELLOW, curses.COLOR_BLACK),
             ('file2.txt', curses.COLOR_YELLOW, curses.COLOR_BLUE),
