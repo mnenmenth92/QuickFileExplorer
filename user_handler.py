@@ -51,6 +51,8 @@ class UserHandler():
         pass
 
     def debug_line(self, string):
+        self.window.addstr(1, 0, '')
+        self.window.clrtoeol()
         self.window.addstr(1, 0, string)
         self.window.addstr(2, 0, '')
         self.window.clrtoeol()
