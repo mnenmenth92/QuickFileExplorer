@@ -46,11 +46,12 @@ class DisplayHandlerTest(unittest.TestCase):
             ('file2.txt', curses.COLOR_YELLOW, curses.COLOR_BLUE),
         ]
         self.assertEqual(correct_list, interface_strings)
-    #
-    # # just to have printed the example interface
-    # def test_print_interface(self):
-    #     self.display.print_interface('', 1)
-    #     pass
+
+
+    # test path with colors
+    def test_path_and_colors(self):
+        path_line = self.display.path_format()
+        self.assertEqual(path_line,(self.root_test_folder,curses.COLOR_WHITE, curses.COLOR_BLACK))
 
 
 if __name__ == '__main__':

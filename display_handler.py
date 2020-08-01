@@ -31,7 +31,7 @@ class DisplayHandler:
 
 
     # return path with colors
-    def path_format():
+    def path_format(self):
         return (self.folder.current_path, path_color, default_background)
 
 
