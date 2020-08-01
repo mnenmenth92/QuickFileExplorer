@@ -7,7 +7,7 @@ class FunctionsTest(unittest.TestCase):
     """
     to be tested from terminal
 
-    """s
+    """
 
     # setup tests
     def setUp(self):
@@ -62,8 +62,15 @@ class FunctionsTest(unittest.TestCase):
     def test_backspace_output(self):
         self.user.input_string = 'test_string'
         self.function = Backspace(self.user)
-        self.function.run()
+        self.function.run(8)
         self.assertEqual(self.user.input_string, 'test_strin')
+
+    # test backspace output
+    def test_character_output(self):
+        self.user.input_string = 'test_string'
+        self.function = Character(self.user)
+        self.function.run(97)
+        self.assertEqual(self.user.input_string, 'test_stringa')
 
 
 
