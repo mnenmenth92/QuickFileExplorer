@@ -26,9 +26,5 @@ class DisplayHandler:
 
         return interface_list
 
-    # print interface
-    def print_interface(self, first_line, selected_line):
-        for line in self.interface_strings(first_line, selected_line):
-            print(line)
 
 
