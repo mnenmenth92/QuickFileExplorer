@@ -14,10 +14,12 @@ class UserHandler:
     def __init__(self, window):
         self.key = curses.KEY_UP  # variable init
         self.window = window
+        self.curses = curses
         self.input_string = ''
         self.input_line = 0  # to be set
         self.continue_loop = True
         self.functions_list = []
+
 
         # build function list
         for name, cls in inspect.getmembers(importlib.import_module("available_functions"), inspect.isclass):

@@ -12,19 +12,23 @@ class DisplayHandler:
 
     # retruns list of interface lines
     def interface_strings(self, first_line, selected_line, filter =''):
-        formated_link = link_format + self.folder.current_path
-        empty_line = reset_format + ''
+        formated_link = self.folder.current_path
+        empty_line = ''
         interface_list = [formated_link, empty_line, first_line]
+        # ToDo interface_format_list = [link colors,empty line colors, line colors]
         folder_content = self.folder.get_content()
         for indx, folder_element in enumerate(folder_content):
             if filter in folder_element:
-                element_string = colors[folder_content[folder_element]] + folder_element
                 if indx == selected_line:
-                    element_string = selected_background + element_string
+                    # ToDo selected color pair number
+                    pass
                 else:
-                    element_string = reset_background + element_string
+                    # ToDo regular color pair number
+                    pass
+
                 interface_list.append(element_string)
-        return interface_list
+                # ToDo interface_format_list.append(string_colors)
+        return interface_list  # ToDo return also list of formats
 
     # print interface
     def print_interface(self, first_line, selected_line):

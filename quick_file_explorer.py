@@ -1,6 +1,7 @@
 import curses
 from user_handler import UserHandler
-
+from folder_handler import FolderHandler
+from config import default_path
 
 class QuickFileExplorer:
     """
@@ -11,6 +12,7 @@ class QuickFileExplorer:
     def __init__(self,stdscr):
         # initialize user handler
         self.user_handler = UserHandler(stdscr)
+        self.folder_handler = FolderHandler(default_path)
 
     def one_loop_cycle(self):
         self.user_handler.select_action()
