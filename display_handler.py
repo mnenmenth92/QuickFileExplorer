@@ -1,3 +1,4 @@
+import curses
 from config import (
     colors,
     selected_background,
@@ -10,11 +11,21 @@ from config import (
 )
 
 class DisplayHandler:
-    def __init__(self, folder):
+    def __init__(self, folder, window):
         self.folder = folder
+        self.window = window
+        self.curses = curses
 
     # retruns list of folders elements with colors and y position
     def folders_elements_format(self, selected_line, filter =''):
+        """
+        list folder with color formatting
+        sets different format for selected line
+
+        :param selected_line: int, selected line number - first folder element = 0
+        :param filter: string - listed only elements which contains this string. If empty all listed.
+        :return: list of tuples: (line content, foreground color, bacground color, line number)
+        """
 
         interface_list = []
         folder_content = self.folder.get_content()
@@ -33,15 +44,37 @@ class DisplayHandler:
                 line_num += 1
         return interface_list
 
-
-
     # return path with colors and y position
     def path_format(self):
         return (self.folder.current_path, path_color, default_background, path_line_num)
 
     # return type line colors and line position
     def type_format(self):
-        return('', type_line_color, default_background, type_line_num)
+        return ('', type_line_color, default_background, type_line_num)
+
+    # update specific line
+    def update_line(self, print_tuple):
+        # clear line
+        self.curses.setsyx(print_tuple[3], 0)
+        self.window.clrtoeol()
+        # init and set color pair
+        # every line has its color pair
+        self.curses.init_pair(print_tuple[3], print_tuple[1], print_tuple[2])
+        self.window.attron(self.curses.color_pair(print_tuple[3]))
+        # print string
+        self.window.addstr(print_tuple[3], 0, print_tuple[0])
+
+    # print path line
+    def print_path_line(self):
+        self.update_line(self.path_format())
+
+    # print folder content
+    def print_folder_content(self, selected_line, filter=''):
+        for element in self.folders_elements_format(selected_line, filter):
+            self.update_line(element)
+
+
+
 
 
 

@@ -27,8 +27,14 @@ class DisplayHandlerTest(unittest.TestCase):
 
     # set up tests
     def setUp(self):
+        stdscr = curses.initscr()
         folder = FolderHandler(self.root_test_folder)
-        self.display = DisplayHandler(folder)
+        self.display = DisplayHandler(folder, stdscr)
+
+    # end test
+    def tearDown(self):
+        curses.endwin()
+
 
     # test interface generation on example folder
     def test_interface_string(self):
@@ -56,10 +62,12 @@ class DisplayHandlerTest(unittest.TestCase):
         path_line = self.display.path_format()
         self.assertEqual(path_line, (self.root_test_folder,curses.COLOR_WHITE, curses.COLOR_BLACK, path_line_num))
 
- # test type line format
+    # test type line format
     def test_type_line(self):
         type_line = self.display.type_format()
         self.assertEqual(type_line, ('', curses.COLOR_WHITE, curses.COLOR_BLACK, type_line_num))
+
+
 
 if __name__ == '__main__':
     unittest.main()

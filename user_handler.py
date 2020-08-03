@@ -27,11 +27,7 @@ class UserHandler:
             function = cls(self)
             self.functions_list.append(function)
 
-    # update specific line
-    def update_line(self, line_num, line_string):
-        self.window.addstr(line_num, 0, '')
-        self.window.clrtoeol()
-        self.window.addstr(line_num, 0, line_string)
+
 
     # change line color and background
     def set_colors(self):

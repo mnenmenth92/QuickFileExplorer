@@ -1,6 +1,7 @@
 import curses
 from user_handler import UserHandler
 from folder_handler import FolderHandler
+from display_handler import DisplayHandler
 from config import default_path
 
 class QuickFileExplorer:
@@ -13,10 +14,10 @@ class QuickFileExplorer:
         # initialize user handler
         self.user_handler = UserHandler(stdscr)
         self.folder_handler = FolderHandler(default_path)
+        self.display_handler = DisplayHandler(self.folder_handler, stdscr)
 
-        # Temporary
-        # self.user_handler.curses.init_pair(1, self.user_handler.curses.COLOR_YELLOW,self.user_handler.curses.COLOR_BLACK)
-        # self.user_handler.window.attron(self.user_handler.curses.color_pair(1))
+        self.display_handler.print_path_line()
+        self.display_handler.print_folder_content()
 
     def one_loop_cycle(self):
         self.user_handler.select_action()
