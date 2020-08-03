@@ -7,7 +7,8 @@ from config import (
     selected_background,
     default_background,
     path_line_num,
-    folder_content_line_num
+    folder_content_line_num,
+    type_line_num
 )
 
 '''
@@ -53,8 +54,12 @@ class DisplayHandlerTest(unittest.TestCase):
     # test path with colors
     def test_path_and_colors(self):
         path_line = self.display.path_format()
-        self.assertEqual(path_line,(self.root_test_folder,curses.COLOR_WHITE, curses.COLOR_BLACK, path_line_num))
+        self.assertEqual(path_line, (self.root_test_folder,curses.COLOR_WHITE, curses.COLOR_BLACK, path_line_num))
 
+ # test type line format
+    def test_type_line(self):
+        type_line = self.display.type_format()
+        self.assertEqual(type_line, ('', curses.COLOR_WHITE, curses.COLOR_BLACK, type_line_num))
 
 if __name__ == '__main__':
     unittest.main()

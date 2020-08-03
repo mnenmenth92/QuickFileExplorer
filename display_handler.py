@@ -5,14 +5,15 @@ from config import (
     path_color,
     type_line_color,
     path_line_num,
-    folder_content_line_num
+    folder_content_line_num,
+    type_line_num
 )
 
 class DisplayHandler:
     def __init__(self, folder):
         self.folder = folder
 
-    # retruns list of folders elements with colors
+    # retruns list of folders elements with colors and y position
     def folders_elements_format(self, selected_line, filter =''):
 
         interface_list = []
@@ -34,10 +35,13 @@ class DisplayHandler:
 
 
 
-    # return path with colors
+    # return path with colors and y position
     def path_format(self):
         return (self.folder.current_path, path_color, default_background, path_line_num)
 
+    # return type line colors and line position
+    def type_format(self):
+        return('', type_line_color, default_background, type_line_num)
 
 
 
