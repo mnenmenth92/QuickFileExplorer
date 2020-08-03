@@ -2,6 +2,7 @@ import curses
 import importlib
 import inspect
 
+
 '''
 curses: https://docs.python.org/2/library/curses.html
 

@@ -6,6 +6,8 @@ from config import (
     colors,
     selected_background,
     default_background,
+    path_line_num,
+    folder_content_line_num
 )
 
 '''
@@ -31,10 +33,10 @@ class DisplayHandlerTest(unittest.TestCase):
     def test_interface_string(self):
         interface_strings = self.display.folders_elements_format(1)
         correct_list = [
-            ('file1.txt', curses.COLOR_YELLOW, curses.COLOR_BLACK),
-            ('file2.txt', curses.COLOR_YELLOW, curses.COLOR_BLUE),
-            ('Folder1', curses.COLOR_GREEN, curses.COLOR_BLACK),
-            ('Folder2', curses.COLOR_GREEN, curses.COLOR_BLACK)
+            ('file1.txt', curses.COLOR_YELLOW, curses.COLOR_BLACK, folder_content_line_num),
+            ('file2.txt', curses.COLOR_YELLOW, curses.COLOR_BLUE, folder_content_line_num + 1),
+            ('Folder1', curses.COLOR_GREEN, curses.COLOR_BLACK, folder_content_line_num + 2),
+            ('Folder2', curses.COLOR_GREEN, curses.COLOR_BLACK, folder_content_line_num + 3)
         ]
         self.assertEqual(correct_list, interface_strings)
 
@@ -42,8 +44,8 @@ class DisplayHandlerTest(unittest.TestCase):
     def test_interface_filtered_string(self):
         interface_strings = self.display.folders_elements_format(1, 'txt')
         correct_list = [
-            ('file1.txt', curses.COLOR_YELLOW, curses.COLOR_BLACK),
-            ('file2.txt', curses.COLOR_YELLOW, curses.COLOR_BLUE),
+            ('file1.txt', curses.COLOR_YELLOW, curses.COLOR_BLACK, folder_content_line_num),
+            ('file2.txt', curses.COLOR_YELLOW, curses.COLOR_BLUE, folder_content_line_num + 1)
         ]
         self.assertEqual(correct_list, interface_strings)
 
@@ -51,7 +53,7 @@ class DisplayHandlerTest(unittest.TestCase):
     # test path with colors
     def test_path_and_colors(self):
         path_line = self.display.path_format()
-        self.assertEqual(path_line,(self.root_test_folder,curses.COLOR_WHITE, curses.COLOR_BLACK))
+        self.assertEqual(path_line,(self.root_test_folder,curses.COLOR_WHITE, curses.COLOR_BLACK, path_line_num))
 
 
 if __name__ == '__main__':

@@ -23,3 +23,9 @@ default_background = curses.COLOR_BLACK
 path_color = curses.COLOR_WHITE
 type_line_color = curses.COLOR_WHITE
 
+# UI elements position
+
+path_line_num = 0
+type_line_num = 3
+folder_content_line_num = 5
+
