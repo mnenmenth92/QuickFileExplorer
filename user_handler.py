@@ -6,10 +6,7 @@ from config import type_line_num
 
 '''
 curses: https://docs.python.org/2/library/curses.html
-
-
 '''
-
 
 class UserHandler:
 
@@ -21,6 +18,7 @@ class UserHandler:
         self.input_line = type_line_num  # to be set
         self.continue_loop = True
         self.functions_list = []
+        self.selected_element = 0
 
 
         # build function list

@@ -1,4 +1,4 @@
-
+from folder_handler import FolderHandler
 
 class OneFunction(object):
     """
@@ -56,6 +56,21 @@ class Character(OneFunction):
         self.user_handler.input_string += chr(functions_int)
         self.user_handler.window.addstr(self.user_handler.input_line, len(self.user_handler.input_string)-1,
                                         chr(functions_int))
+
+
+class Up(OneFunction):
+    """
+    selects upper folder element
+    """
+    def __init__(self, user_handler):
+        super().__init__(user_handler)
+        self.functions_int = 259
+
+    # run function
+    def run(self, functions_int):
+        if self.user_handler > 0:
+            self.user_handler.selected_element -= 1
+
 
 
 # Temporary
