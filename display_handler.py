@@ -59,8 +59,9 @@ class DisplayHandler:
         self.window.clrtoeol()
         # init and set color pair
         # every line has its color pair
-        self.curses.init_pair(print_tuple[3], print_tuple[1], print_tuple[2])
-        self.window.attron(self.curses.color_pair(print_tuple[3]))
+        pair_number = print_tuple[3] + 1  # can't be zero
+        self.curses.init_pair(pair_number, print_tuple[1], print_tuple[2])
+        self.window.attron(self.curses.color_pair(pair_number))
         # print string
         self.window.addstr(print_tuple[3], 0, print_tuple[0])
 
@@ -72,6 +73,12 @@ class DisplayHandler:
     def print_folder_content(self, selected_line, filter=''):
         for element in self.folders_elements_format(selected_line, filter):
             self.update_line(element)
+        # set type format after printing
+        self.curses.init_pair(type_line_num + 1, self.type_format()[1], self.type_format()[2])
+        self.window.attron(self.curses.color_pair(type_line_num + 1))
+
+
+
 
 
 

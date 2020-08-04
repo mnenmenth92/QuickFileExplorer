@@ -17,7 +17,10 @@ class QuickFileExplorer:
         self.display_handler = DisplayHandler(self.folder_handler, stdscr)
 
         self.display_handler.print_path_line()
-        self.display_handler.print_folder_content()
+        self.display_handler.print_folder_content(0)
+        self.user_handler.set_cursor()
+        self.user_handler.window.refresh()
+
 
     def one_loop_cycle(self):
         self.user_handler.select_action()

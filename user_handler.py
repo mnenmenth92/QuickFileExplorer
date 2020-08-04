@@ -1,6 +1,7 @@
 import curses
 import importlib
 import inspect
+from config import type_line_num
 
 
 '''
@@ -17,7 +18,7 @@ class UserHandler:
         self.window = window
         self.curses = curses
         self.input_string = ''
-        self.input_line = 0  # to be set
+        self.input_line = type_line_num  # to be set
         self.continue_loop = True
         self.functions_list = []
 
@@ -28,11 +29,6 @@ class UserHandler:
             self.functions_list.append(function)
 
 
-
-    # change line color and background
-    def set_colors(self):
-        pass
-
     # select function from function_list
     def select_action(self):
         key = self.window.getch()
@@ -40,6 +36,8 @@ class UserHandler:
             if function.check_sign(key):
                 function.run(key)
 
-    # reset whole interface
-    def reset_terminal(self):
-        pass
+    # set cursor on end of type line
+    def set_cursor(self):
+        self.window.addstr(type_line_num, len(self.input_string), "".encode('utf-8'))
+
+
