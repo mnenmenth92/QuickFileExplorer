@@ -12,6 +12,7 @@ UI contains 3 elements:
  - typing input
  - folder content
  
+ ![alt text](https://i.ibb.co/kB0Lqz9/Bez-tytu-u.png)
 
 # List of functions
 
