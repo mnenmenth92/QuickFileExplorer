@@ -113,14 +113,14 @@ class Right(OneFunction):
     def run(self, functions_int):
         # build path
         element_is_folder = self.user_handler.folder.build_path(self.user_handler.display.selected_element_string)
-        # update path line
-        self.user_handler.display.print_path_line()
-        #store current selected element
-        self.user_handler.store_selected_element()
-        # set selected line to the top
-        self.user_handler.selected_element = 0
-        # filter and print content
         if element_is_folder:
+            # update path line
+            self.user_handler.display.print_path_line()
+            # store current selected element
+            self.user_handler.store_selected_element()
+            # set selected line to the top
+            self.user_handler.selected_element = 0
+            # filter and print content
             self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                    self.user_handler.input_string)
 
@@ -139,14 +139,15 @@ class Left(OneFunction):
         last_path = self.user_handler.folder.current_path
         # strip path
         self.user_handler.folder.strip_path()
-        # update path line
-        self.user_handler.display.print_path_line()
-        # get selected element from history list
-        selected_element = self.user_handler.remove_selected_element()
-        # set selected element
-        self.user_handler.selected_element = selected_element
-        # filter and print content
+        # if new path differ from previous
         if self.user_handler.folder.current_path != last_path:
+            # update path line
+            self.user_handler.display.print_path_line()
+            # get selected element from history list
+            selected_element = self.user_handler.remove_selected_element()
+            # set selected element
+            self.user_handler.selected_element = selected_element
+            # filter and print content
             self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                    self.user_handler.input_string)
 

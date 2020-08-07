@@ -71,8 +71,11 @@ class DisplayHandler:
         pair_number = print_tuple[3] + 1  # can't be zero
         self.curses.init_pair(pair_number, print_tuple[1], print_tuple[2])
         self.window.attron(self.curses.color_pair(pair_number))
-        # print string
-        self.window.addstr(print_tuple[3], 0, print_tuple[0])
+        # print string ToDo check the reason
+        try:
+            self.window.addstr(print_tuple[3], 0, print_tuple[0])
+        except curses.error:
+            print("there was an error in {}".format(print_tuple[0]))
 
     # print path line
     def print_path_line(self):
