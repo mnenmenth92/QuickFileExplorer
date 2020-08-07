@@ -112,12 +112,16 @@ class Right(OneFunction):
     # run function
     def run(self, functions_int):
         # build path
-        self.user_handler.folder.build_path(self.user_handler.display.selected_element_string)
+        element_is_folder = self.user_handler.folder.build_path(self.user_handler.display.selected_element_string)
         # update path line
         self.user_handler.display.print_path_line()
+        # set selected line to the top
+        self.user_handler.selected_element = 0
         # filter and print content
-        self.user_handler.display.print_folder_content(self.user_handler.selected_element,
+        if element_is_folder:
+            self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                    self.user_handler.input_string)
+
 
 class Left(OneFunction):
     """

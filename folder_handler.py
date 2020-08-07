@@ -17,8 +17,10 @@ class FolderHandler:
 
     # build path if parameter is a folder
     def build_path(self, subfolder):
-        if self.if_element_is_folder(subfolder):
+        is_folder = self.if_element_is_folder(subfolder)
+        if is_folder:
             self.current_path = self.join_path(subfolder)
+        return is_folder
 
     # build path if parameter is a folder
     def strip_path(self):
@@ -38,7 +40,8 @@ class FolderHandler:
             return 'folder'
         if name:
             name_elements = name.split('.')
-            if name_elements[0] == '':
+
+            if name_elements[0] == '' or len(name_elements) == 1:
                 return ''
             else:
                 return '.' + name_elements[1]
