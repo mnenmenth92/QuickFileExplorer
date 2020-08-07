@@ -36,7 +36,7 @@ class Backspace(OneFunction):
         # move cursor
         self.user_handler.window.addstr(self.user_handler.input_line, len(self.user_handler.input_string),
                                         "".encode('utf-8'))
-        # filter content
+        # filter and print content
         self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                        self.user_handler.input_string)
 
@@ -58,7 +58,7 @@ class Character(OneFunction):
         self.user_handler.input_string += chr(functions_int)
         self.user_handler.window.addstr(self.user_handler.input_line, len(self.user_handler.input_string)-1,
                                         chr(functions_int))
-        # filter content
+        # filter and print content
         self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                        self.user_handler.input_string)
 
@@ -79,6 +79,11 @@ class Up(OneFunction):
         if self.user_handler.selected_element > 0:
             self.user_handler.selected_element -= 1
 
+        # filter and print content
+        self.user_handler.display.print_folder_content(self.user_handler.selected_element,
+                                                   self.user_handler.input_string)
+
+
 class Down(OneFunction):
     """
     selects lower folder element
@@ -89,10 +94,12 @@ class Down(OneFunction):
 
     # run function
     def run(self, functions_int):
-        if self.user_handler.selected_element < len(self.user_handler.display.filtered_folder_content):
+        if self.user_handler.selected_element < len(self.user_handler.display.filtered_folder_content) - 1:
             self.user_handler.selected_element += 1
 
-
+        # filter and print content
+        self.user_handler.display.print_folder_content(self.user_handler.selected_element,
+                                                   self.user_handler.input_string)
 
 
 # Temporary
@@ -101,6 +108,6 @@ class CtrlC(OneFunction):
         super().__init__(user_handler)
         self.functions_int = 3
     def run(self, func_num):
-        self.user_handler.continue_loop =False
+        self.user_handler.continue_loop = False
 
 

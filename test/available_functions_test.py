@@ -56,6 +56,23 @@ class FunctionsTest(unittest.TestCase):
     def test_character_false(self):
         self.check_int('Character', 8, False)  # 8 - backspace
 
+    # test character input function with correct input
+    def test_up_true(self):
+        self.check_int('Up', 259, True)  # 259 - up
+
+    # test character input function with incorrect input
+    def test_up_false(self):
+        self.check_int('Up', 8, False)  # 8 - backspace
+    # test character input function with correct input
+    def test_down_true(self):
+        self.check_int('Down', 258, True)  # 259 - up
+
+    # test character input function with incorrect input
+    def test_down_false(self):
+        self.check_int('Down', 8, False)  # 8 - backspace
+
+
+
     # test backspace output
     def test_backspace_output(self):
         function = self.functions_dic['Backspace']

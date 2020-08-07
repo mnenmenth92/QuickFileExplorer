@@ -24,7 +24,7 @@ class QuickFileExplorer:
 
     def one_loop_cycle(self):
         self.user_handler.select_action()
-        # ToDo set cursor to type line
+        self.user_handler.set_cursor()
         self.user_handler.window.refresh()
 
 
