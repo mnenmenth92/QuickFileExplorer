@@ -10,11 +10,11 @@ class QuickFileExplorer:
     """
 
     # init
-    def __init__(self,stdscr):
+    def __init__(self, stdscr):
         # initialize user handler
-        self.user_handler = UserHandler(stdscr)
         self.folder_handler = FolderHandler(default_path)
         self.display_handler = DisplayHandler(self.folder_handler, stdscr)
+        self.user_handler = UserHandler(self.folder_handler, self.display_handler, stdscr)
 
         self.display_handler.print_path_line()
         self.display_handler.print_folder_content(0)
@@ -24,7 +24,9 @@ class QuickFileExplorer:
 
     def one_loop_cycle(self):
         self.user_handler.select_action()
+        # ToDo set cursor to type line
         self.user_handler.window.refresh()
+
 
 
 # run app

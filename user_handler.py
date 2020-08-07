@@ -10,7 +10,7 @@ curses: https://docs.python.org/2/library/curses.html
 
 class UserHandler:
 
-    def __init__(self, window):
+    def __init__(self, folder, display, window):
         self.key = curses.KEY_UP  # variable init
         self.window = window
         self.curses = curses
@@ -19,6 +19,8 @@ class UserHandler:
         self.continue_loop = True
         self.functions_list = []
         self.selected_element = 0
+        self.folder = folder
+        self.display = display
 
 
         # build function list

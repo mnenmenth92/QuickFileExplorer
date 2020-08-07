@@ -1,4 +1,3 @@
-from folder_handler import FolderHandler
 
 class OneFunction(object):
     """
@@ -37,6 +36,9 @@ class Backspace(OneFunction):
         # move cursor
         self.user_handler.window.addstr(self.user_handler.input_line, len(self.user_handler.input_string),
                                         "".encode('utf-8'))
+        # filter content
+        self.user_handler.display.print_folder_content(self.user_handler.selected_element,
+                                                       self.user_handler.input_string)
 
 
 class Character(OneFunction):
@@ -56,6 +58,12 @@ class Character(OneFunction):
         self.user_handler.input_string += chr(functions_int)
         self.user_handler.window.addstr(self.user_handler.input_line, len(self.user_handler.input_string)-1,
                                         chr(functions_int))
+        # filter content
+        self.user_handler.display.print_folder_content(self.user_handler.selected_element,
+                                                       self.user_handler.input_string)
+
+
+
 
 
 class Up(OneFunction):
@@ -68,8 +76,22 @@ class Up(OneFunction):
 
     # run function
     def run(self, functions_int):
-        if self.user_handler > 0:
+        if self.user_handler.selected_element > 0:
             self.user_handler.selected_element -= 1
+
+class Down(OneFunction):
+    """
+    selects lower folder element
+    """
+    def __init__(self, user_handler):
+        super().__init__(user_handler)
+        self.functions_int = 258
+
+    # run function
+    def run(self, functions_int):
+        if self.user_handler.selected_element < len(self.user_handler.display.filtered_folder_content):
+            self.user_handler.selected_element += 1
+
 
 
 

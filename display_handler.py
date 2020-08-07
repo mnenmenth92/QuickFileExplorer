@@ -15,6 +15,7 @@ class DisplayHandler:
         self.folder = folder
         self.window = window
         self.curses = curses
+        self.filtered_folder_content =[]
 
     # retruns list of folders elements with colors and y position
     def folders_elements_format(self, selected_line, filter =''):
@@ -52,11 +53,16 @@ class DisplayHandler:
     def type_format(self):
         return ('', type_line_color, default_background, type_line_num)
 
+    # clear selected line
+    def clear_line(self, line):
+        self.curses.setsyx(line, 0)
+        self.window.clrtoeol()
+
+
     # update specific line
     def update_line(self, print_tuple):
         # clear line
-        self.curses.setsyx(print_tuple[3], 0)
-        self.window.clrtoeol()
+        #self.clear_line(print_tuple[3])
         # init and set color pair
         # every line has its color pair
         pair_number = print_tuple[3] + 1  # can't be zero
@@ -67,12 +73,23 @@ class DisplayHandler:
 
     # print path line
     def print_path_line(self):
+        self.clear_line(path_line_num)
         self.update_line(self.path_format())
+
+    # clear content
+    def clear_printed_content(self):
+        content_length = len(self.filtered_folder_content)
+        for line_number in range(content_length):
+            self.clear_line(folder_content_line_num + line_number)
+
 
     # print folder content
     def print_folder_content(self, selected_line, filter=''):
+        self.window.clrtobot()
+        self.filtered_folder_content = []
         for element in self.folders_elements_format(selected_line, filter):
             self.update_line(element)
+            self.filtered_folder_content.append(element[0])
         # set type format after printing
         self.curses.init_pair(type_line_num + 1, self.type_format()[1], self.type_format()[2])
         self.window.attron(self.curses.color_pair(type_line_num + 1))
