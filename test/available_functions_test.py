@@ -56,20 +56,37 @@ class FunctionsTest(unittest.TestCase):
     def test_character_false(self):
         self.check_int('Character', 8, False)  # 8 - backspace
 
-    # test character input function with correct input
+    # test up input function with correct input
     def test_up_true(self):
         self.check_int('Up', 259, True)  # 259 - up
 
-    # test character input function with incorrect input
+    # test up input function with incorrect input
     def test_up_false(self):
         self.check_int('Up', 8, False)  # 8 - backspace
-    # test character input function with correct input
-    def test_down_true(self):
-        self.check_int('Down', 258, True)  # 259 - up
 
-    # test character input function with incorrect input
+    # test down input function with correct input
+    def test_down_true(self):
+        self.check_int('Down', 258, True)  # 258 - down
+
+    # test down input function with incorrect input
     def test_down_false(self):
         self.check_int('Down', 8, False)  # 8 - backspace
+
+    # test right input function with correct input
+    def test_right_true(self):
+        self.check_int('Right', 261, True)  # 261 - right
+
+    # test right input function with incorrect input
+    def test_right_false(self):
+        self.check_int('Right', 8, False)  # 8 - backspace
+
+    # test left input function with correct input
+    def test_left_true(self):
+        self.check_int('Left', 260, True)  # 260- left
+
+    # test left input function with incorrect input
+    def test_left_false(self):
+        self.check_int('Left', 8, False)  # 8 - backspace
 
 
 

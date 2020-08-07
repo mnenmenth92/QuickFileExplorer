@@ -101,6 +101,41 @@ class Down(OneFunction):
         self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                    self.user_handler.input_string)
 
+class Right(OneFunction):
+    """
+    opens folder
+    """
+    def __init__(self, user_handler):
+        super().__init__(user_handler)
+        self.functions_int = 261
+
+    # run function
+    def run(self, functions_int):
+        # build path
+        self.user_handler.folder.build_path(self.user_handler.display.selected_element_string)
+        # update path line
+        self.user_handler.display.print_path_line()
+        # filter and print content
+        self.user_handler.display.print_folder_content(self.user_handler.selected_element,
+                                                   self.user_handler.input_string)
+
+class Left(OneFunction):
+    """
+    goes to upper folder
+    """
+    def __init__(self, user_handler):
+        super().__init__(user_handler)
+        self.functions_int = 260
+
+    # run function
+    def run(self, functions_int):
+        # build path
+        self.user_handler.folder.strip_path()
+        # update path line
+        self.user_handler.display.print_path_line()
+        # filter and print content
+        self.user_handler.display.print_folder_content(self.user_handler.selected_element,
+                                                   self.user_handler.input_string)
 
 # Temporary
 class CtrlC(OneFunction):

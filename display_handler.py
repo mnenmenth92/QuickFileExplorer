@@ -16,6 +16,7 @@ class DisplayHandler:
         self.window = window
         self.curses = curses
         self.filtered_folder_content =[]
+        self.selected_element_string = ''
 
     # retruns list of folders elements with colors and y position
     def folders_elements_format(self, selected_line, filter =''):
@@ -36,11 +37,15 @@ class DisplayHandler:
 
                 if indx == selected_line:
                     background_color = selected_background
+                    self.selected_element_string = folder_element
                 else:
                     background_color = default_background
 
                 extension = self.folder.element_type_string(folder_element)
-                foreground_color = colors[extension]
+                try:
+                    foreground_color = colors[extension]
+                except:
+                    foreground_color = colors['default']
                 interface_list.append((folder_element, foreground_color, background_color, folder_content_line_num + line_num))
                 line_num += 1
         return interface_list
@@ -61,8 +66,6 @@ class DisplayHandler:
 
     # update specific line
     def update_line(self, print_tuple):
-        # clear line
-        #self.clear_line(print_tuple[3])
         # init and set color pair
         # every line has its color pair
         pair_number = print_tuple[3] + 1  # can't be zero

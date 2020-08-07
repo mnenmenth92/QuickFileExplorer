@@ -28,7 +28,6 @@ class QuickFileExplorer:
         self.user_handler.window.refresh()
 
 
-
 # run app
 def main(stdscr):
 
