@@ -21,6 +21,7 @@ class UserHandler:
         self.selected_element = 0
         self.folder = folder
         self.display = display
+        self.selected_element_list = []
 
 
         # build function list
@@ -39,5 +40,17 @@ class UserHandler:
     # set cursor on end of type line
     def set_cursor(self):
         self.window.addstr(type_line_num, len(self.input_string), "".encode('utf-8'))
+
+    # store previously selected elements
+    def store_selected_element(self):
+        self.selected_element_list.append(self.selected_element)
+
+    # remove previously selected element
+    def remove_selected_element(self):
+        try:
+            last_element = self.selected_element_list.pop()
+        except:
+            last_element = 0
+        return last_element
 
 
