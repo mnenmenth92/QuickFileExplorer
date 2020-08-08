@@ -199,10 +199,14 @@ class Enter(OneFunction):
         return functions_int in self.functions_ints_list
 
     def run(self, functions_int):
-        # open current path in file explorer
-        path = os.path.realpath(self.user_handler.folder.join_path(self.user_handler.display.selected_element_string))
-        # start file / open folder
-        os.startfile(path)
+        try:
+            # open current path in file explorer
+            path = os.path.realpath(self.user_handler.folder.join_path(self.user_handler.display.selected_element_string))
+            # start file / open folder
+            os.startfile(path)
+        except OSError:
+            self.user_handler.display.print_error_line('No default application assigned')
+
 
 
 class Escape(OneFunction):
