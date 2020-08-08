@@ -23,8 +23,6 @@ UI contains 3 elements:
  - updating displayed content while typing
  - arrows allowing to move in directories
  - shortcuts:
-   - ctrl-C - copy element
-   - ctrl-V - paste in current directory (if possible)
    - ctrl-D - open windows file explorer in current directory
    - Enter - run/ open file/ directory
    - ESC - hide file explorer
