@@ -96,6 +96,19 @@ class FunctionsTest(unittest.TestCase):
     def test_OpenExplorer_false(self):
         self.check_int('OpenExplorer', 8, False)  # 8 - backspace
 
+    # test Enter input function with correct input
+    def test_Enter_true(self):
+        self.check_int('Enter', 10, True)  # 10 - Enter
+
+
+    # test Return input function with correct input
+    def test_Return_true(self):
+        self.check_int('Enter', 459, True)  # 459 - Return
+
+    # test Enter input function with incorrect input
+    def test_Enter_false(self):
+        self.check_int('OpenExplorer', 8, False)  # 8 - backspace
+
 
 
     # test backspace output

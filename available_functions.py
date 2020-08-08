@@ -183,7 +183,24 @@ class OpenExplorer(OneFunction):
         os.startfile(path)
 
 
+class Enter(OneFunction):
+    """
+    opens selected folder in explorer
+    open files in windows default app
+    runs file
+    """
 
+    def __init__(self, user_handler):
+        super().__init__(user_handler)
+        self.functions_ints_list = [10, 459]
+
+    def check_sign(self, functions_int):
+        return functions_int in self.functions_ints_list
+
+    def run(self, functions_int):
+        # open current path in file explorer
+        path = os.path.realpath(self.user_handler.folder.join_path(self.user_handler.display.selected_element_string))
+        os.startfile(path)
 
 
 # Temporary
