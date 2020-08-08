@@ -88,6 +88,14 @@ class FunctionsTest(unittest.TestCase):
     def test_left_false(self):
         self.check_int('Left', 8, False)  # 8 - backspace
 
+    # test OpenExplorer input function with correct input
+    def test_OpenExplorer_true(self):
+        self.check_int('OpenExplorer', 4, True)  # 4- ctrl+D
+
+    # test OpenExplorer input function with incorrect input
+    def test_OpenExplorer_false(self):
+        self.check_int('OpenExplorer', 8, False)  # 8 - backspace
+
 
 
     # test backspace output

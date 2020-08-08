@@ -1,3 +1,5 @@
+import os
+
 class OneFunction(object):
     """
     All functions parent
@@ -164,6 +166,24 @@ class Left(OneFunction):
             # filter and print content
             self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                            self.user_handler.input_string)
+
+
+class OpenExplorer(OneFunction):
+    """
+    opens current path in explorer
+    """
+
+    def __init__(self, user_handler):
+        super().__init__(user_handler)
+        self.functions_int = 4
+
+    def run(self, functions_int):
+        # open current path in file explorer
+        path = os.path.realpath(self.user_handler.folder.current_path)
+        os.startfile(path)
+
+
+
 
 
 # Temporary
