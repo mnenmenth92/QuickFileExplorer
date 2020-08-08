@@ -56,9 +56,13 @@ class Character(OneFunction):
 
     # run function
     def run(self, functions_int):
+        # add character
         self.user_handler.input_string += chr(functions_int)
+        # print character
         self.user_handler.window.addstr(self.user_handler.input_line, len(self.user_handler.input_string) - 1,
                                         chr(functions_int))
+        # select first item
+        self.user_handler.selected_element = 0
         # filter and print content
         self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                        self.user_handler.input_string)
@@ -117,6 +121,8 @@ class Right(OneFunction):
         # build path
         element_is_folder = self.user_handler.folder.build_path(self.user_handler.display.selected_element_string)
         if element_is_folder:
+            # clear filtering input
+            self.user_handler.clear_input_string()
             # update path line
             self.user_handler.display.print_path_line()
             # store current selected element
@@ -145,6 +151,8 @@ class Left(OneFunction):
         self.user_handler.folder.strip_path()
         # if new path differ from previous
         if self.user_handler.folder.current_path != last_path:
+            # clear filtering input
+            self.user_handler.clear_input_string()
             # clear error line
             self.user_handler.display.clear_error()
             # update path line

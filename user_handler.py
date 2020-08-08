@@ -43,7 +43,7 @@ class UserHandler:
 
     # store previously selected elements
     def store_selected_element(self):
-        self.selected_element_list.append(self.selected_element)
+        self.selected_element_list.append(self.display.selected_item_index)
 
     # remove previously selected element
     def remove_selected_element(self):
@@ -52,5 +52,10 @@ class UserHandler:
         except:
             last_element = 0
         return last_element
+
+    # clear input string
+    def clear_input_string(self):
+        self.input_string = ''
+        self.display.clear_line(type_line_num)
 
 

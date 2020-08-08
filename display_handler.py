@@ -21,6 +21,7 @@ class DisplayHandler:
         self.curses = curses
         self.filtered_folder_content =[]
         self.selected_element_string = ''
+        self.selected_item_index = 0
 
     # retruns list of folders elements with colors and y position
     def folders_elements_format(self, selected_line, filter =''):
@@ -42,12 +43,12 @@ class DisplayHandler:
         line_num = 0
         for indx, folder_element in enumerate(folder_content):
             if filter.lower() in folder_element.lower():
-                if indx == selected_line:
+                if line_num == selected_line:
                     background_color = selected_background
                     self.selected_element_string = folder_element
+                    self.selected_item_index = indx
                 else:
                     background_color = default_background
-
                 extension = self.folder.element_type_string(folder_element)
                 try:
                     foreground_color = colors[extension]
