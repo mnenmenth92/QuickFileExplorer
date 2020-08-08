@@ -30,6 +30,18 @@ UI contains 3 elements:
    - ctrl-D - open windows file explorer in current directory
    - Enter - run/ open file/ directory
    - ESC - hide file explorer
-   - ctrl+alt+space - show/ hide file explorer
+   
+ # Get started
+ 
+
+ - install windows curses:
+ ```
+ pip install windows-curses
+ ```
+ - run main pp
+ ```
+python quick_file_explorer.py 
+ ```
+
    
    
