@@ -56,6 +56,17 @@ class DisplayHandlerTest(unittest.TestCase):
         ]
         self.assertEqual(correct_list, interface_strings)
 
+    # test interface generation on example folder not case sensitive
+    def test_interface_filterin_not_case_sens(self):
+        interface_strings = self.display.folders_elements_format(1, 'f')
+        correct_list = [
+            ('file1.txt', curses.COLOR_YELLOW, curses.COLOR_BLACK, folder_content_line_num),
+            ('file2.txt', curses.COLOR_YELLOW, curses.COLOR_BLUE, folder_content_line_num + 1),
+            ('Folder1', curses.COLOR_GREEN, curses.COLOR_BLACK, folder_content_line_num + 2),
+            ('Folder2', curses.COLOR_GREEN, curses.COLOR_BLACK, folder_content_line_num + 3)
+        ]
+        self.assertEqual(correct_list, interface_strings)
+
 
     # test path with colors
     def test_path_and_colors(self):
@@ -66,7 +77,6 @@ class DisplayHandlerTest(unittest.TestCase):
     def test_type_line(self):
         type_line = self.display.type_format()
         self.assertEqual(type_line, ('', curses.COLOR_WHITE, curses.COLOR_BLACK, type_line_num))
-
 
 
 if __name__ == '__main__':

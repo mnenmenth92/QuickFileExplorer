@@ -8,7 +8,10 @@ from config import (
     path_line_num,
     folder_content_line_num,
     type_line_num,
-    last_selected_element
+    last_selected_element,
+    user_info_color_fg,
+    user_info_color_bg,
+    user_info_line
 )
 
 class DisplayHandler:
@@ -31,11 +34,14 @@ class DisplayHandler:
         """
 
         interface_list = []
-        folder_content = self.folder.get_content()
+        try:
+            folder_content = self.folder.get_content()
+        except PermissionError:
+            self.print_error_line('Access denied!')
+            folder_content = []
         line_num = 0
         for indx, folder_element in enumerate(folder_content):
-            if filter in folder_element:
-
+            if filter.lower() in folder_element.lower():
                 if indx == selected_line:
                     background_color = selected_background
                     self.selected_element_string = folder_element
@@ -53,7 +59,11 @@ class DisplayHandler:
 
     # return path with colors and y position
     def path_format(self):
-        return (self.folder.current_path, path_color, default_background, path_line_num)
+        return (self.folder.current_path, path_color, default_background, path_line_num)    # return path with colors and y position
+
+    # return error format
+    def error_format(self, text):
+        return (text, user_info_color_fg, user_info_color_bg, user_info_line)
 
     # return type line colors and line position
     def type_format(self):
@@ -64,6 +74,10 @@ class DisplayHandler:
         self.curses.setsyx(line, 0)
         self.window.clrtoeol()
 
+    #clear error line
+    def clear_error(self):
+        self.clear_line(user_info_line)
+
 
     # update specific line
     def update_line(self, print_tuple, start_line = 0):
@@ -72,7 +86,8 @@ class DisplayHandler:
         pair_number = print_tuple[3] + 1  # can't be zero
         self.curses.init_pair(pair_number, print_tuple[1], print_tuple[2])
         self.window.attron(self.curses.color_pair(pair_number))
-        # print string ToDo check the reason
+        # print string
+        # even if there is an curses.error it works (is printed) - ToDo check the reason
         try:
             self.window.addstr(print_tuple[3] - start_line, 0, print_tuple[0])
         except curses.error:
@@ -91,6 +106,11 @@ class DisplayHandler:
             if needed_content_length > window_size:
                 return needed_content_length - window_size
         return 0
+
+    # print error
+    def print_error_line(self, error_text):
+        self.clear_line(user_info_line)
+        self.update_line(self.error_format(error_text))
 
     # print path line
     def print_path_line(self):

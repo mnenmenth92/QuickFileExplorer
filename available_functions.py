@@ -1,9 +1,9 @@
-
 class OneFunction(object):
     """
     All functions parent
 
     """
+
     def __init__(self, user_handler):
         self.user_handler = user_handler
         self.functions_int = -1
@@ -46,6 +46,7 @@ class Character(OneFunction):
     adds character to the end of the input_string
     any character between ascii 32 and 126
     """
+
     def __init__(self, user_handler):
         super().__init__(user_handler)
 
@@ -56,20 +57,18 @@ class Character(OneFunction):
     # run function
     def run(self, functions_int):
         self.user_handler.input_string += chr(functions_int)
-        self.user_handler.window.addstr(self.user_handler.input_line, len(self.user_handler.input_string)-1,
+        self.user_handler.window.addstr(self.user_handler.input_line, len(self.user_handler.input_string) - 1,
                                         chr(functions_int))
         # filter and print content
         self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                        self.user_handler.input_string)
 
 
-
-
-
 class Up(OneFunction):
     """
     selects upper folder element
     """
+
     def __init__(self, user_handler):
         super().__init__(user_handler)
         self.functions_int = 259
@@ -81,13 +80,14 @@ class Up(OneFunction):
 
         # filter and print content
         self.user_handler.display.print_folder_content(self.user_handler.selected_element,
-                                                   self.user_handler.input_string)
+                                                       self.user_handler.input_string)
 
 
 class Down(OneFunction):
     """
     selects lower folder element
     """
+
     def __init__(self, user_handler):
         super().__init__(user_handler)
         self.functions_int = 258
@@ -100,12 +100,14 @@ class Down(OneFunction):
             self.user_handler.selected_element += 1
         # filter and print content
         self.user_handler.display.print_folder_content(self.user_handler.selected_element,
-                                                   self.user_handler.input_string)
+                                                       self.user_handler.input_string)
+
 
 class Right(OneFunction):
     """
     opens folder
     """
+
     def __init__(self, user_handler):
         super().__init__(user_handler)
         self.functions_int = 261
@@ -123,13 +125,14 @@ class Right(OneFunction):
             self.user_handler.selected_element = 0
             # filter and print content
             self.user_handler.display.print_folder_content(self.user_handler.selected_element,
-                                                   self.user_handler.input_string)
+                                                           self.user_handler.input_string)
 
 
 class Left(OneFunction):
     """
     goes to upper folder
     """
+
     def __init__(self, user_handler):
         super().__init__(user_handler)
         self.functions_int = 260
@@ -142,6 +145,8 @@ class Left(OneFunction):
         self.user_handler.folder.strip_path()
         # if new path differ from previous
         if self.user_handler.folder.current_path != last_path:
+            # clear error line
+            self.user_handler.display.clear_error()
             # update path line
             self.user_handler.display.print_path_line()
             # get selected element from history list
@@ -150,9 +155,7 @@ class Left(OneFunction):
             self.user_handler.selected_element = selected_element
             # filter and print content
             self.user_handler.display.print_folder_content(self.user_handler.selected_element,
-                                                   self.user_handler.input_string)
-
-
+                                                           self.user_handler.input_string)
 
 
 # Temporary
@@ -161,7 +164,6 @@ class CtrlC(OneFunction):
     def __init__(self, user_handler):
         super().__init__(user_handler)
         self.functions_int = 3
+
     def run(self, func_num):
         self.user_handler.continue_loop = False
-
-
