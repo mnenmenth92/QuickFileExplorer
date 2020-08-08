@@ -1,7 +1,7 @@
 import curses
 
 # default values
-default_path = 'C:\\TestFolder'
+default_path = 'C:\\'
 window_name = 'Quick File Explorer'
 
 # displayed colors
