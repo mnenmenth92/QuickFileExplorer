@@ -100,7 +100,6 @@ class FunctionsTest(unittest.TestCase):
     def test_Enter_true(self):
         self.check_int('Enter', 10, True)  # 10 - Enter
 
-
     # test Return input function with correct input
     def test_Return_true(self):
         self.check_int('Enter', 459, True)  # 459 - Return
@@ -108,6 +107,14 @@ class FunctionsTest(unittest.TestCase):
     # test Enter input function with incorrect input
     def test_Enter_false(self):
         self.check_int('OpenExplorer', 8, False)  # 8 - backspace
+
+    # test escape input function with correct input
+    def test_Escape_true(self):
+        self.check_int('Escape', 27, True)  # 27 - escape
+
+    # test escape input function with incorrect input
+    def test_Escape_false(self):
+        self.check_int('Escape', 8, False)  # 8 - backspace
 
 
 

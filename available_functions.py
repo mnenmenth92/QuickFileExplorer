@@ -180,6 +180,7 @@ class OpenExplorer(OneFunction):
     def run(self, functions_int):
         # open current path in file explorer
         path = os.path.realpath(self.user_handler.folder.current_path)
+        # open folder
         os.startfile(path)
 
 
@@ -200,15 +201,18 @@ class Enter(OneFunction):
     def run(self, functions_int):
         # open current path in file explorer
         path = os.path.realpath(self.user_handler.folder.join_path(self.user_handler.display.selected_element_string))
+        # start file / open folder
         os.startfile(path)
 
 
-# Temporary
-
-class CtrlC(OneFunction):
+class Escape(OneFunction):
+    """
+    stop app
+    """
     def __init__(self, user_handler):
         super().__init__(user_handler)
-        self.functions_int = 3
+        self.functions_int = 27
 
     def run(self, func_num):
+        # stop main loop
         self.user_handler.continue_loop = False
