@@ -38,7 +38,7 @@ UI contains 3 elements:
  ```
  pip install windows-curses
  ```
- - run main pp
+ - run main app
  ```
 python quick_file_explorer.py 
  ```
