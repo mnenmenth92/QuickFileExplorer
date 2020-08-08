@@ -20,8 +20,12 @@ UI contains 3 elements:
    - folders - green
    - text files - yellow
    - images, videos - magenta
- - updating displayed content while typing
- - arrows allowing to move in directories
+ - filtering displayed content while typing
+ - arrows (up, down) allowing to move up and down in folder content
+ - arrows (left, right) allowing to move in and out of directories
+ - rising errors during exploring folders:
+   - access denied - for selected folder
+   - file impossible to open
  - shortcuts:
    - ctrl-D - open windows file explorer in current directory
    - Enter - run/ open file/ directory
