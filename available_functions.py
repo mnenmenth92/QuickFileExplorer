@@ -94,9 +94,10 @@ class Down(OneFunction):
 
     # run function
     def run(self, functions_int):
+        # if it is not last element
         if self.user_handler.selected_element < len(self.user_handler.display.filtered_folder_content) - 1:
+            # move selected element to next one
             self.user_handler.selected_element += 1
-
         # filter and print content
         self.user_handler.display.print_folder_content(self.user_handler.selected_element,
                                                    self.user_handler.input_string)

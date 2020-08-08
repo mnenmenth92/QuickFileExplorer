@@ -28,4 +28,5 @@ type_line_color = curses.COLOR_WHITE
 path_line_num = 0
 type_line_num = 3
 folder_content_line_num = 5
+last_selected_element = 2
 
