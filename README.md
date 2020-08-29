@@ -34,14 +34,15 @@ UI contains 3 elements:
  # Get started
  
 
- - install windows curses:
- ```
- pip install windows-curses
- ```
- - run main app
- ```
-python quick_file_explorer.py 
- ```
+ - project package
+ 
+  ``https://test.pypi.org/project/QuickFileExplorer-pkg-mnenmenth92/0.0.1/``
+  
+  
+ # To do
+ - showing and hiding app console on keyboard shortcut
+ - easy access to some list of directories like: desktop, documents etc
+ - tests on large number of files
 
    
    

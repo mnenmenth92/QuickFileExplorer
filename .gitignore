@@ -1,6 +1,9 @@
 # Editors
 .idea/
 __pycache__/
+build/
+dist/
+QuickFileExplorer_pkg_mnenmenth92.egg-info/
 
 ToDo.txt
 temporary*test.py
