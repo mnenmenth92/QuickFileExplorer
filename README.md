@@ -9,10 +9,12 @@ It shows and hides on shortcut command, allows filtering folder content, move ac
 
 UI contains 3 elements:
  - current path
+ - error message
  - typing input
  - folder content
  
- ![alt text](https://i.ibb.co/kB0Lqz9/Bez-tytu-u.png)
+ 
+ ![alt text](https://i.ibb.co/XxHGvqL/Test-Folder.png)![alt text](https://i.ibb.co/z4QshVw/Filtering.png)![alt text](https://i.ibb.co/z68pW4N/Access-denied.png)
 
 # List of functions
 
